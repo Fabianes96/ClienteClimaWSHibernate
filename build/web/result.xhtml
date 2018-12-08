@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="verRegistros">
+            <p:panel header="Registros de clima:">
+                <p:dataTable id="tabla" value="#{climaBean.listRegistro}"
+                             var="registro" paginator="true" rows="9">
+                    <p:column headerText="Ciudad">
+                        <h:outputText value="#{registro.ciudad}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Clima actual">
+                        <h:outputText value="#{registro.clima}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Temperatura en C°">
+                        <h:outputText value="#{registro.centigrados}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Temperatura en F°">
+                        <h:outputText value="#{registro.fahrenheit}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Porcentaje de nubosidad">
+                        <h:outputText value="#{registro.nubosidad}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Porcentaje de humedad">
+                        <h:outputText value="#{registro.porcentajeHumedad}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Probabilidad de precipitacion">
+                        <h:outputText value="#{registro.probPrecipitacion}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Prediccion proximos 3 dias">
+                        <h:outputText value="#{registro.prediccion}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+        <br/><br/><br/><br/><br/>
+        <h:form id="busqueda">
+            <p:panel header="Buscar registro" footer="Arquitectura de Software">
+                <h:panelGrid columns="3">
+                        <h:outputLabel value="Codigo:" for="codigo"/>
+                        <p:inputText id="codigo" value="#{climaBean.codigo}" required="true"/>
+                        <p:message for="codigo" style="color:red"/>
+                        <h:panelGroup/>
+                        <p:commandButton id="bt2" ajax="false" action="#{climaBean.buscarRegistro()}"
+                                        value="Buscar" icon="ui-icon-search"/>                       
+                        <br/>                        
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>    
+</html>
+

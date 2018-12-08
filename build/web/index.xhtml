@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="FormClima">
+            <p:growl/>
+            <p:panel header ="Formulario ingreso de un registro de clima:" footer="Arquitectura de Software">
+                <p:panelGrid columns="3">
+                    <h:outputLabel value="Ciudad:" for="ciudad"/>
+                    <p:inputText id="ciudad" value="#{climaBean.ciudad}" required="true"/>
+                    <p:message for="ciudad" style="color:red"/>
+                    
+                    
+                    <h:outputLabel value="Clima actual:" for="clima"/>
+                    <p:inputText id="clima" value="#{climaBean.clima}" required="true"/>
+                    <p:message for="clima" style="color:red"/>                    
+                    
+                    <h:outputLabel value="Temperatura en C°:" for="centigrados"/>
+                    <p:inputText id="centigrados" value="#{climaBean.centigrados}" required="true"/>
+                    <p:message for="centigrados" style="color:red"/>
+                    
+                    <h:outputLabel value="Temperatura en F°:" for="fahrenheit"/>
+                    <p:inputText id="fahrenheit" value="#{climaBean.fahrenheit}" required="true"/>
+                    <p:message for="fahrenheit" style="color:red"/>
+                    
+                    <h:outputLabel value="Porcentaje de nubosidad:" for="nubosidad"/>
+                    <p:inputText id="nubosidad" value="#{climaBean.nubosidad}" required="true"/>
+                    <p:message for="nubosidad" style="color:red"/>
+                    
+                    <h:outputLabel value="Porcentaje de humedad:" for="porcentaje_humedad"/>
+                    <p:inputText id="porcentaje_humedad" value="#{climaBean.porcentaje_humedad}" required="true"/>
+                    <p:message for="porcentaje_humedad" style="color:red"/>
+                    
+                    <h:outputLabel value="Probabilidad de precipitación:" for="prob_precipitacion"/>
+                    <p:inputText id="prob_precipitacion" value="#{climaBean.prob_precipitacion}" required="true"/>
+                    <p:message for="prob_precipitacion" style="color:red"/>
+                    
+                    <h:outputLabel value="Predicción proximos 3 dias:" for="prediccion"/>
+                    <p:inputText id="prediccion" value="#{climaBean.prediccion}" required="true"/>
+                    <p:message for="prediccion" style="color:red"/>
+                    <h:panelGroup/>
+                    <p:commandButton id="bt" ajax="false" action="#{climaBean.guardarRegistro()}"
+                                     value="Guardar" icon="ui-icon-disk"/>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>        
+        <br/><br/><br/><br/>
+        --------------------------------------------------------------------------------------------------------------------
+        <br/><br/><br/><br/> 
+        <h:form>
+            <p:panel header="Ver registros">
+                <h:panelGrid columns="3">
+                    <p:commandButton id="bt4" ajax="false" action="#{climaBean.registros()}"
+                                        value="Buscar" icon="ui-icon-search"/>                       
+                        <br/>                        
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+        <h:form>
+            <p:panel header="Buscar Predicciones de clima" footer="Arquitectura de Software">
+                <h:panelGrid columns="3">
+                        <h:outputLabel value="Ciudad:" for="ciudad"/>
+                        <p:inputText id="ciudad" value="#{climaBean.ciudad}" required="true"/>
+                        <p:message for="ciudad" style="color:red"/>
+                        <h:panelGroup/>
+                        <p:commandButton id="bt3" ajax="false" action="#{climaBean.buscarCiudad()}"
+                                        value="Buscar" icon="ui-icon-search"/>                       
+                        <br/>                        
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+        
+    </h:body>
+</html>
+
